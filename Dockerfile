@@ -14,7 +14,8 @@ RUN mvn dependency:go-offline
 
 # Copy source and package
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -Dmaven.test.skip=true
+
 
 # ── Stage 2: Run with JDK 24 slim ──────────────────────────────────────
 FROM eclipse-temurin:24-jdk-alpine
